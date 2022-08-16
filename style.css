@@ -54,6 +54,12 @@ button:focus-visible {
   outline-offset: 3px;
 }
 
+.title {
+  font-weight: 700;
+  font-size: 3.2rem;
+  line-height: 4rem;
+}
+
 .wrapper {
   height: 100vh;
   display: grid;
@@ -69,6 +75,7 @@ button:focus-visible {
   box-shadow: 0 .2rem .4rem rgba(0, 0, 0, 0.1);
   gap: 3.2rem;
   margin: 0 1rem;
+  position: relative;
 }
 
 #imc-form {
@@ -101,4 +108,42 @@ button:focus-visible {
 #imc-form input:focus-visible {
   outline: none;
   border: 1px solid #02799D;
+}
+
+.modal-wrapper {
+  position: absolute;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.336);
+
+  display: grid;
+  place-content: center;
+
+  opacity: 0;
+  visibility: hidden;
+}
+.modal-wrapper.open {
+  opacity: 1;
+  visibility: visible;
+}
+
+.modal {
+  position: relative;
+}
+
+button.close {
+  position: absolute;
+  top: 1.6rem;
+  right: 1.6rem;
+  margin: 0;
+  padding: 0;
+  background: none;
+  border: none;
+  height: 2.4rem;
+  width: 2.4rem;
+  transition: transform 300ms;
+  cursor: pointer;
+}
+
+button.close:hover {
+  transform: scale(1.1);
 }
