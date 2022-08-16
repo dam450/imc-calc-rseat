@@ -10,11 +10,15 @@
   font-size: 62.5%;
 
   /* color variables */
-  --bg-color: hsla(231, 80%, 8%, 1);
+  --bg-color: #040925;
   --bg-card: #fff;
-  --btn-color: hsl(194, 97%, 31%);
-  --btn-accent: hsl(194, 97%, 20%);
+  --btn-color: #02789c;
+  --btn-hover: #005e7a;
+  --btn-accent: #024d64;
   --txt-color: #0c3440;
+  --txt-alert: #FFF;
+  --bg-alert: #F03E3E;
+  --txt-placeholder: #49505780;
 }
 
 body, input, button {
@@ -26,6 +30,35 @@ body {
   font-size: 1.6rem;
   background: var(--bg-color);
 }
+
+.alert-box {
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+
+  padding: .8rem;
+  background: var(--bg-alert);
+  text-align: center;
+  color: var(--bg-card);
+  font-weight: bold;
+
+  visibility: hidden;
+  opacity: 0;
+
+  transform: translateY(-3.5rem);
+
+  transition: 300ms;
+}
+
+.alert-box.open {
+  visibility: visible;
+  opacity: .9;
+
+  transform: translateY(0);
+  transition: 300ms;
+}
+
 
 button {
   background: var(--btn-color);
@@ -45,7 +78,7 @@ button {
 }
 
 button:hover {
-  filter: brightness(1.2);
+  background-color: var(--btn-hover);
 }
 
 
@@ -105,15 +138,22 @@ button:focus-visible {
   line-height: 20px;
 }
 
-#imc-form input:focus-visible {
+#imc-form input::placeholder {
+  color: var(--txt-placeholder);
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 20px;
+}
+
+#imc-form input:focus {
   outline: none;
-  border: 1px solid #02799D;
+  border: 2px solid #02799D;
 }
 
 .modal-wrapper {
   position: absolute;
   inset: 0;
-  background-color: rgba(0, 0, 0, 0.336);
+  background-color: rgba(0, 0, 0, 0.712);
 
   display: grid;
   place-content: center;
@@ -121,6 +161,7 @@ button:focus-visible {
   opacity: 0;
   visibility: hidden;
 }
+
 .modal-wrapper.open {
   opacity: 1;
   visibility: visible;

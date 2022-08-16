@@ -1,3 +1,4 @@
+import { AlertError as alert } from './alert.js'
 import { Modal } from './modal.js'
 import { calculateIMC, notNumber } from './utils.js'
 
@@ -16,18 +17,19 @@ formImc.onsubmit = event => {
   const weightOrHeightInvalid = notNumber(height) || notNumber(weight)
 
   if (weightOrHeightInvalid) {
-    console.log('show error message')
+    alert.open()
+    if (inputWeight.value === '') inputWeight.focus()
+    else inputHeight.focus()
     return
   }
+
+  alert.close()
 
   const imc = calculateIMC(weight, height)
 
   console.log(imc)
   Modal.displayMessage(`Seu IMC é de ${imc}`) 
-  
-
 }
 
-
-
-console.log("script started!")
+inputWeight.oninput = () => alert.close()
+inputHeight.oninput = () => alert.close()
